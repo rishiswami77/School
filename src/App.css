@@ -1,0 +1,431 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: antiquewhite;
+}
+
+.about-page {
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.feature-item i {
+  color: #28a745;
+}
+
+.principal-img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 4px solid #e9ecef;
+}
+
+.teacher-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.teacher-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.teacher-img {
+  height: 220px;
+  object-fit: cover;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+/* === Layout === */
+.student-login {
+  background: #cfdfff;
+}
+
+.login-wrapper {
+  width: 900px;
+  max-width: 95%;
+  height: 560px;
+  border: none;
+}
+
+/* === Left Image Section === */
+.left-section {
+  background-color: #eaf1ff;
+}
+
+.illustration {
+  width: 70%;
+  max-width: 320px;
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* === Right Form Section === */
+.right-section {
+  background-color: #fff;
+}
+
+/* === Input Styling with Icons === */
+.input-field {
+  border-radius: 12px;
+  border: 1px solid #d1d1d1;
+  padding: 0.75rem 1rem;
+  transition: all 0.3s ease-in-out;
+  font-size: 0.95rem;
+  background-color: #f9faff;
+}
+
+.input-field:focus {
+  border-color: #2f55d4;
+  box-shadow: 0 0 8px rgba(47, 85, 212, 0.25);
+  background-color: #fff;
+}
+
+.input-icon {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  color: #6c757d;
+  font-size: 1.1rem;
+}
+
+/* === Buttons === */
+.login-btn {
+  border-radius: 12px;
+  padding: 0.75rem;
+  background-color: #2f55d4;
+  border: none;
+  transition: all 0.3s;
+}
+
+.login-btn:hover {
+  background-color: #2449c3;
+}
+
+.social-btn {
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.social-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* === Text Styling === */
+h3 {
+  font-size: 1.8rem;
+}
+
+p {
+  font-size: 0.95rem;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .left-section {
+    display: none;
+  }
+
+  .login-wrapper {
+    height: auto;
+  }
+
+  .right-section {
+    padding: 2rem;
+  }
+}
+
+/* General Layout */
+.login-page {
+  background-color: #f8f9fa;
+}
+
+.btn-primary {
+  background-color: #0069d9;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border-color: #0069d9;
+}
+
+/* Left Illustration Section */
+.bg-illustration {
+  background-color: #e8f1fd;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Character (Blue Shirt Figure) */
+.illustration-character {
+  width: 100px;
+  height: 180px;
+  background: linear-gradient(to bottom, #007bff 70%, #001f3f 30%);
+  border-radius: 50px 50px 20px 20px;
+  position: absolute;
+  bottom: 60px;
+  left: 40%;
+  transform: translateX(-50%);
+}
+
+/* Head */
+.illustration-character::before {
+  content: "";
+  width: 50px;
+  height: 50px;
+  background-color: #f4c2a1;
+  border-radius: 50%;
+  position: absolute;
+  top: -55px;
+  left: 25px;
+}
+
+/* Laptop */
+.illustration-laptop {
+  width: 120px;
+  height: 70px;
+  background-color: #cfd8dc;
+  border-radius: 6px;
+  position: absolute;
+  bottom: 120px;
+  left: 52%;
+  transform: rotate(-10deg);
+}
+
+/* Plant Decoration */
+.illustration-plant {
+  width: 50px;
+  height: 100px;
+  background: linear-gradient(to top, #8cc63f, #a4d867);
+  border-radius: 50px 50px 0 0;
+  position: absolute;
+  bottom: 20px;
+  left: 10%;
+  transform: rotate(-5deg);
+}
+
+
+
+/* Overall Page */
+.teacher-login-page {
+  background: linear-gradient(135deg, #e9f0ff, #f8faff);
+  height: 100vh;
+  padding: 20px;
+}
+
+/* Wrapper */
+.login-wrapper {
+  background: #ffffff;
+  max-width: 1100px;
+  width: 100%;
+  min-height: 600px;
+  border-radius: 1.5rem;
+  overflow: hidden;
+}
+
+/* LEFT SECTION (Illustration) */
+.left-illustration {
+  background: linear-gradient(135deg, #e7ebff 0%, #f2f5ff 100%);
+  flex: 1;
+  min-height: 100%;
+  position: relative;
+}
+
+.scene-svg {
+  width: 100%;
+  height: auto;
+  max-width: 600px;
+  filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.1));
+}
+
+/* RIGHT SECTION (Form) */
+.right-login {
+  flex: 1;
+  background-color: #ffffff;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-card {
+  background-color: #ffffff;
+  border: 1px solid #e6ebff;
+  border-radius: 1rem;
+  width: 400px;
+  margin: 0 auto;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+}
+
+.title {
+  font-weight: 700;
+  color: #2b3674;
+  letter-spacing: 0.8px;
+}
+
+/* Form Inputs */
+.form-input {
+  border-radius: 0.6rem;
+  border: 1px solid #cfd8ff;
+  transition: all 0.3s ease;
+}
+
+.form-input:focus {
+  border-color: #5468ff;
+  box-shadow: 0 0 0 3px rgba(84, 104, 255, 0.15);
+}
+
+.forgot-link {
+  font-size: 0.85rem;
+  color: #5468ff;
+  text-decoration: none;
+}
+
+.forgot-link:hover {
+  text-decoration: underline;
+}
+
+/* Button */
+.btn-login {
+  background-color: #5468ff;
+  border: none;
+  border-radius: 0.6rem;
+  padding: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: all 0.3s ease;
+}
+
+.btn-login:hover {
+  background-color: #4053d2;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(84, 104, 255, 0.3);
+}
+
+/* Teacher SVG Character */
+.teacher-svg {
+  position: absolute;
+  bottom: 0;
+  right: -60px;
+  width: 200px;
+  height: auto;
+  transform: rotate(2deg);
+  animation: floaty 4s ease-in-out infinite;
+}
+
+/* Floating animation for SVG */
+@keyframes floaty {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(2deg);
+  }
+
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 992px) {
+  .login-wrapper {
+    flex-direction: column;
+    box-shadow: none;
+  }
+
+  .left-illustration {
+    display: none;
+  }
+
+  .right-login {
+    padding: 40px 20px;
+  }
+
+  .login-card {
+    max-width: 100%;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .teacher-svg {
+    display: none;
+  }
+}
+
+.contact-page {
+  background-color: #f8f9fc;
+  min-height: 100vh;
+}
+
+.contact-card {
+  background-color: #ffffff;
+  border-left: 5px solid #5468ff;
+}
+
+.contact-card i {
+  font-size: 1.3rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  border: 1px solid #d8defe;
+  transition: all 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #5468ff;
+  box-shadow: 0 0 0 3px rgba(84, 104, 255, 0.15);
+}
+
+.btn-primary {
+  background-color: #5468ff;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #4053d2;
+  box-shadow: 0 4px 12px rgba(84, 104, 255, 0.3);
+}
+
+.map-container iframe {
+  border: 0;
+  width: 100%;
+  height: 250px;
+}
+
+@media (max-width: 768px) {
+
+  .contact-form,
+  .contact-card {
+    padding: 20px;
+  }
+}
+
+.dropdown-toggle::after {
+  display: none !important;
+}
