@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, } from '@reduxjs/toolkit'
 
-const apiUrl = import.meta.env.ngrok_API_URL;
+// const apiUrl = import.meta.env.ngrok_API_URL;
 
 // Define a type for the slice state
 export interface TeacherState {
@@ -19,7 +19,7 @@ const initialState: TeacherState = {
 // Define the CreateAnsyncThunk api
 export const fetchTeacherList = createAsyncThunk('fetchTeacherList', async () => {
     try {
-        const res = await fetch(`${apiUrl}?action=teacherlist`);
+        const res = await fetch(`http://localhost/backend/api/?action=teacherlist`);
 
         if (!res.ok) {
             return console.log("Server error");
@@ -33,7 +33,7 @@ export const fetchTeacherList = createAsyncThunk('fetchTeacherList', async () =>
 
 export const fetchDeleteTeacher = createAsyncThunk('fetchDeleteStudent', async (id: number) => {
     try {
-        const res = await fetch(`${apiUrl}?action=deleteteacher&id=${id}`);
+        const res = await fetch(`http://localhost/backend/api/?action=deleteteacher&id=${id}`);
 
         if (!res.ok) {
             return console.log("Server error");

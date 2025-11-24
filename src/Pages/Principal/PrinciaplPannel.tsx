@@ -7,16 +7,11 @@ const AdminPannel = () => {
     const navigate = useNavigate();
     const [username, setUsername] = useState("");
     useEffect(() => {
-        fetch("http://localhost/backend/api/?action=principalcheck", {
-            credentials: "include"
-        })
+        fetch("http://localhost/backend/api/?action=principalcheck", { credentials: "include" })
             .then(res => res.json())
             .then(data => {
-                if (!data.logged_in) {
-                    navigate("/principal-login");
-                } else {
-                    setUsername(data.username);
-                }
+                if (!data.logged_in) navigate("/principal-login");
+                else setUsername(data.username);
             })
             .catch(() => navigate("/principal-login"));
     }, []);

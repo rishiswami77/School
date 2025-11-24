@@ -7,7 +7,7 @@ const Dashboard: React.FC = () => {
 
     // Check session
     useEffect(() => {
-        fetch("http://localhost/backend/api/?action=check", {
+        fetch("http://localhost/backend/api/?action=principalcheck", {
             credentials: "include"
         })
             .then(res => res.json())
@@ -16,7 +16,7 @@ const Dashboard: React.FC = () => {
                 else setUsername(data.username);
             })
             .catch(() => navigate("/principal-login"));
-    }, [navigate]);
+    }, []);
 
     const handleLogout = async () => {
         await fetch("http://localhost/backend/api/?action=logout", {

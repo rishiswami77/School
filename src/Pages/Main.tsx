@@ -17,17 +17,20 @@ const Main = () => {
     const teacherdata = useSelector((state: RootState) => state.teacher);
     const studentdata = useSelector((state: RootState) => state.student);
 
-    const DeleteTeacher = async (id: any) => {
-        dispatch(fetchDeleteTeacher(id));
+    const DeleteTeacher = async (id: number) => {
+        await dispatch(fetchDeleteTeacher(id));
+        dispatch(fetchTeacherList()); // Re-fetch the list after delete
     };
+
     const DeleteStudent = async (id: any) => {
-        dispatch(fetchDeleteStudent(id));
+        await dispatch(fetchDeleteStudent(id));
+        dispatch(fetchStudentList()); // Re-fetch the list after delete
     };
 
     useEffect(() => {
         dispatch(fetchTeacherList());
         dispatch(fetchStudentList());
-    }, [DeleteStudent, DeleteTeacher]);
+    }, []);
 
     useEffect(() => {
         if (Array.isArray(teacherdata.data)) {

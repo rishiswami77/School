@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, } from '@reduxjs/toolkit'
 
-const apiUrl = import.meta.env.ngrok_API_URL;
+// const apiUrl = import.meta.env.ngrok_API_URL;
 // Define a type for the slice state
 export interface StudentState {
     isLoading: boolean,
@@ -18,7 +18,7 @@ const initialState: StudentState = {
 // Define the CreateAnsyncThunk api
 export const fetchStudentList = createAsyncThunk('fetchStudentList', async () => {
     try {
-        const res = await fetch(`${apiUrl}?action=studentlist`);
+        const res = await fetch(`http://localhost/backend/api/?action=studentlist`);
 
         if (!res.ok) {
             console.log("Server error", res.status);
@@ -36,7 +36,7 @@ export const fetchAddStudent = createAsyncThunk(
         try {
             // FIRST REQUEST
             const res1 = await fetch(
-                `${apiUrl}?action=addstudent`,
+                `http://localhost/backend/api/?action=addstudent`,
                 {
                     method: "POST",
                     headers: {
@@ -63,7 +63,7 @@ export const fetchAddStudent = createAsyncThunk(
 
             // SECOND REQUEST
             const res2 = await fetch(
-                `${apiUrl}?action=addstudentdetails`,
+                `http://localhost/backend/api/?action=addstudentdetails`,
                 {
                     method: "POST",
                     headers: {
@@ -106,7 +106,7 @@ export const fetchAddStudent = createAsyncThunk(
 
 export const fetchDeleteStudent = createAsyncThunk('fetchDeleteStudent', async (id: number) => {
     try {
-        const res = await fetch(`${apiUrl}?action=deletestudent&id=${id}`);
+        const res = await fetch(`http://localhost/backend/api/?action=deletestudent&id=${id}`);
 
         if (!res.ok) {
             return console.log("Server error");

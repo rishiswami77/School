@@ -6,16 +6,15 @@ import { Link, useNavigate } from "react-router-dom";
 const Header = () => {
     const navigate = useNavigate();
     useEffect(() => {
-        fetch("http://localhost/backend/api/?action=principalcheck", {
-            credentials: "include"
-        })
+        fetch("http://localhost/backend/api/?action=principalcheck", { credentials: "include" })
             .then(res => res.json())
             .then(data => {
-                if (!data.logged_in) navigate('/Dashboard');
-                else navigate('/Principal');
+                if (!data.logged_in) navigate("/Dashboard");
+                else navigate("/Principal");
             })
-            .catch(() => { navigate('/Dashboard') });
+            .catch(() => navigate('/Dashboard'));
     }, []);
+
     return (
         <>
             <nav className="navbar navbar-expand-lg bg-body-tertiary">

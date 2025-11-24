@@ -24,8 +24,15 @@ const AttendanceStudent: React.FC = () => {
             .catch((err) => console.error(err));
         fetch(`http://localhost/backend/api/?action=getattendance&user_id=${ID}&user_type=student`)
             .then((res) => res.json())
-            .then((data) => setAttendanceRecords(data))
-            .catch((err) => console.log(err));
+            .then((data) => {
+                if (Array.isArray(data)) {
+                    setAttendanceRecords(data);
+                } else {
+                    setAttendanceRecords([]);
+                }
+            })
+            .catch((err) => console.error(err));
+
     }, [id]);
 
 
