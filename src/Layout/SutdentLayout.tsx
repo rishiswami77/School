@@ -1,6 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import PrincipalPannel from "../Pages/Principal/PrincipalPannel";
+import StudentPannel from "../Pages/Student/StudentPannel";
 
 const PrincipalLayout: React.FC = () => {
 
@@ -9,7 +9,7 @@ const PrincipalLayout: React.FC = () => {
         <div className="d-flex flex-column min-vh-100 bg-light">
             {/* ===== Header / Navbar ===== */}
             <header className="shadow-sm">
-                <PrincipalPannel />
+                <StudentPannel />
             </header>
 
             {/* ===== Main Content ===== */}

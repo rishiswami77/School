@@ -21,6 +21,7 @@ import AttendanceTeacher from './Pages/Teacher/AttendanceTeacher';
 import AttendanceStudent from './Pages/Student/AttendanceStudent';
 import TeacherDetails from './Pages/Teacher/TeacherDetails';
 import PrincipalLayout from './Layout/PrincipalLayout';
+import SutdentLayout from './Layout/SutdentLayout';
 
 function App() {
   return (
@@ -51,6 +52,10 @@ function App() {
               <Route path='/Principal/attendance-student/:id' element={<AttendanceStudent />} />
               <Route path='/Principal/attendance-teacher/:id' element={<AttendanceTeacher />} />
               <Route path='/Principal/teacher-details/:id' element={<TeacherDetails />} />
+            </Route>
+            <Route path='/Student' element={<SutdentLayout />} >
+              <Route index element={<Main />} />
+              <Route path='/Student/search' element={<Search />} />
             </Route>
           </Routes>
         </BrowserRouter>
