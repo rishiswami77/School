@@ -8,7 +8,7 @@ const AddStudent: React.FC = () => {
 
     const dispatch = useDispatch<AppDispatch>();
     const [teachers, setTeachers] = useState<any>();
-    const data = useSelector((state: RootState) => state.teacher)
+    const data = useSelector((state: RootState) => state.teacher);
     const [formdata, setFormdata] = useState({
         name: "",
         father_name: "",

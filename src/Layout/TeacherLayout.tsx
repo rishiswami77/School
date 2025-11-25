@@ -1,15 +1,15 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import StudentPannel from "../Pages/Student/StudentPannel";
+import TeacherPannel from "../Pages/Teacher/TeacherPannel";
 
-const StudentLayout: React.FC = () => {
+const TeacherLayout: React.FC = () => {
 
 
     return (
         <div className="d-flex flex-column min-vh-100 bg-light">
             {/* ===== Header / Navbar ===== */}
             <header className="shadow-sm">
-                <StudentPannel />
+                <TeacherPannel />
             </header>
 
             {/* ===== Main Content ===== */}
@@ -30,4 +30,4 @@ const StudentLayout: React.FC = () => {
     );
 };
 
-export default StudentLayout;
+export default TeacherLayout;

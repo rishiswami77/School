@@ -103,8 +103,8 @@ const AttendanceList: React.FC = () => {
                     </Button>
                 </td>
                 <td>
-                    {listType === "students" ? <Link to={`/admin/attendance-student/id=${item.id}`}><RiShareBoxLine /></Link>
-                        : <Link to={`/admin/attendance-teacher/id=${item.id}`}><RiShareBoxLine /></Link>}
+                    {listType === "students" ? <Link to={`/Principal/attendance-student/id=${item.id}`}><RiShareBoxLine /></Link>
+                        : <Link to={`/Principal/attendance-teacher/id=${item.id}`}><RiShareBoxLine /></Link>}
                 </td>
             </tr>
         ));

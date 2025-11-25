@@ -3,7 +3,7 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import AddTeachers from './Pages/Teacher/AddTeachers';
+import AddTeachers from './Pages/Teacher/TeahcerSignup';
 import Layout from './Layout/Layout';
 import AddStudent from './Pages/Student/AddStudent';
 import Search from './Pages/componets/Search';
@@ -22,6 +22,8 @@ import AttendanceStudent from './Pages/Student/AttendanceStudent';
 import TeacherDetails from './Pages/Teacher/TeacherDetails';
 import PrincipalLayout from './Layout/PrincipalLayout';
 import SutdentLayout from './Layout/SutdentLayout';
+import TeacherLayout from './Layout/TeacherLayout';
+import TeacherSignup from './Pages/Teacher/TeahcerSignup';
 
 function App() {
   return (
@@ -39,6 +41,7 @@ function App() {
               <Route path='/Dashboard/student-login' element={<StudentLogin />} />
               <Route path='/Dashboard/teacher-login' element={<TeacherLogin />} />
               <Route path='/Dashboard/principal-login' element={<PrincipalLogin />} />
+              <Route path='/Dashboard/teacher-signup' element={<TeacherSignup />} />
             </Route>
             <Route path='/Principal' element={<PrincipalLayout />} >
               <Route index element={<Main />} />
@@ -56,6 +59,12 @@ function App() {
             <Route path='/Student' element={<SutdentLayout />} >
               <Route index element={<Main />} />
               <Route path='/Student/search' element={<Search />} />
+            </Route>
+            <Route path='/Teacher' element={<TeacherLayout />} >
+              <Route index element={<Main />} />
+              <Route path='/Teacher/search' element={<Search />} />
+              <Route path='/Teacher/student-details/:id' element={<StudentDetails />} />
+              <Route path='/Teacher/student-edit/:id' element={<EditStudent />} />
             </Route>
           </Routes>
         </BrowserRouter>

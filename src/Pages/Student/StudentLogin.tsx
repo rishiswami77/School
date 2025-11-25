@@ -1,8 +1,53 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FaUser, FaLock, FaGoogle, FaFacebook } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const StudentLogin: React.FC = () => {
+
+    const navigate = useNavigate();
+    const [form, setForm] = useState({ username: "", password: "" });
+    const [loading, setLoading] = useState(false);
+
+    // Check session
+    useEffect(() => {
+        fetch("http://localhost/backend/api/?action=studentcheck", {
+            credentials: "include"
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.logged_in) {
+                    navigate("/Student");
+                }
+            })
+            .catch(err => console.error("Check failed:", err));
+    }, []);
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!form.username || !form.password) {
+            alert("Both username and password are required.");
+            return;
+        }
+        setLoading(true);
+        try {
+            const res = await fetch("http://localhost/backend/api/?action=studentlogin", {
+                method: "POST",
+                credentials: "include",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams({ username: form.username, password: form.password })
+            });
+            const data = await res.json();
+            if (data.success) navigate("/Student");
+            else alert(data.message);
+        } catch (err) {
+            console.error(err);
+            alert("Server error");
+        }
+        setLoading(false);
+    };
+
+
     return (
         <div className="student-login d-flex align-items-center justify-content-center vh-100">
             <div className="login-wrapper bg-white shadow-lg rounded-4 overflow-hidden">
@@ -23,15 +68,16 @@ const StudentLogin: React.FC = () => {
                             Welcome back! Please enter your details below 👋
                         </p>
 
-                        <form>
+                        <form onSubmit={handleSubmit}>
                             {/* Email Input */}
                             <div className="mb-3 position-relative">
                                 <FaUser className="input-icon" />
                                 <input
-                                    type="email"
+                                    type="text"
                                     className="form-control input-field ps-5"
-                                    placeholder="Enter your email"
-                                    required
+                                    value={form.username}
+                                    name="username"
+                                    onChange={(e) => setForm({ ...form, username: e.target.value })}
                                 />
                             </div>
 
@@ -41,7 +87,9 @@ const StudentLogin: React.FC = () => {
                                 <input
                                     type="password"
                                     className="form-control input-field ps-5"
-                                    placeholder="Enter your password"
+                                    value={form.password}
+                                    name="password"
+                                    onChange={(e) => setForm({ ...form, password: e.target.value })}
                                     required
                                 />
                             </div>
@@ -50,8 +98,9 @@ const StudentLogin: React.FC = () => {
                             <button
                                 type="submit"
                                 className="btn btn-primary w-100 fw-semibold mb-3 login-btn"
+                                name="login"
                             >
-                                Login
+                                {loading ? "Signing In..." : "Sign In"}
                             </button>
 
                             {/* OR Divider */}

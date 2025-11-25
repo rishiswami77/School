@@ -11,7 +11,8 @@ const Main = () => {
 
     const [teachers, setTeachers] = useState<any>();
     const [students, setStudents] = useState<any>();
-    const [admin, setAdmin] = useState(false);
+    const [principal, setPrincipal] = useState(false);
+    const [teacher, setTeacher] = useState(false);
 
     const dispatch = useDispatch<AppDispatch>();
     const teacherdata = useSelector((state: RootState) => state.teacher);
@@ -47,11 +48,21 @@ const Main = () => {
         })
             .then(res => res.json())
             .then(data => {
-                if (!data.logged_in) setAdmin(false);
-                else setAdmin(true);
+                if (!data.logged_in) setPrincipal(false);
+                else setPrincipal(true);
             })
-            .catch(() => { setAdmin(false) });
-    }, [admin]);
+            .catch(() => { setPrincipal(false) });
+
+        fetch("http://localhost/backend/api/?action=teachercheck", {
+            credentials: "include"
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (!data.logged_in) setTeacher(false);
+                else setTeacher(true);
+            })
+            .catch(() => { setTeacher(false) });
+    }, [principal, teacher]);
 
     return (
         <>
@@ -68,13 +79,19 @@ const Main = () => {
                                 <th>Class</th>
                                 <th>Year</th>
                                 <th>Teacher Name</th>
-                                {admin && (
+                                {principal && (
                                     <>
                                         <th>Edit</th>
                                         <th>Delete</th>
                                         <th>Details</th>
                                     </>
                                 )}
+                                {teacher && 
+                                <>
+                                <th>Edit</th>
+                                <th>Details</th>
+                                </>
+                                }
                             </tr>
                         </thead>
                         <tbody>
@@ -87,13 +104,19 @@ const Main = () => {
                                     <td>{details.class}</td>
                                     <td>{details.year}</td>
                                     <td>{details.teacher_name}</td>
-                                    {admin && (
+                                    {principal && (
                                         <>
                                             <td className="text-center"><Link to={`/Principal/student-edit/id=${details.id}`} className="text-dark"><FaRegEdit /></Link></td>
                                             <td className="text-center"><button className="border-0 bg-transparent" onClick={() => DeleteStudent(details.id)}><RiDeleteBinLine /></button></td>
                                             <td className="text-center"><Link to={`/Principal/student-details/id=${details.id}`}><RiShareBoxLine className="text-dark" /></Link></td>
                                         </>
                                     )}
+                                    {teacher &&
+                                        <>
+                                            <td className="text-center"><Link to={`/Teacher/student-edit/id=${details.id}`} className="text-dark"><FaRegEdit /></Link></td>
+                                            <td className="text-center"><Link to={`/Teacher/student-details/id=${details.id}`}><RiShareBoxLine className="text-dark" /></Link></td>
+                                        </>
+                                    }
                                 </tr>
                             ))}
                         </tbody>
@@ -106,7 +129,7 @@ const Main = () => {
                                 <th>#</th>
                                 <th>Name</th>
                                 <th>Subject</th>
-                                {admin && (
+                                {principal && (
                                     <>
                                         <th>Edit</th>
                                         <th>Delete</th>
@@ -121,7 +144,7 @@ const Main = () => {
                                     <td>{details.id}</td>
                                     <td>{details.name} {details.surname}</td>
                                     <td>{details.subject}</td>
-                                    {admin && (
+                                    {principal && (
                                         <>
                                             <td className="text-center"><Link to={`/Principal/teacher-edit/id=${details.id}`} className="text-dark"><FaRegEdit /></Link></td>
                                             <td className="text-center"><button className="border-0 bg-transparent" onClick={() => DeleteTeacher(details.id)}><RiDeleteBinLine /></button></td>

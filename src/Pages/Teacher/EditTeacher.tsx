@@ -87,7 +87,7 @@ const EditTeachers: React.FC = () => {
                     </div>
                     <div className="input-group">
                         <label htmlFor="password" className="align-self-center">Password:</label>&nbsp;
-                        <input type="password" name='password' id="password" value={teacher?.password} onChange={handleChange} placeholder='Enter your password' className='form-control m-2' />
+                        <input type="text" name='password' id="password" value={teacher?.password} onChange={handleChange} placeholder='Enter your password' className='form-control m-2' />
                     </div>
                     <div className="input-group">
                         <label htmlFor="subject" className="align-self-center me-2">Subject:</label>&nbsp;&nbsp;

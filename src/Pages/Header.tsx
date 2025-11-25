@@ -1,19 +1,38 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Dropdown } from "react-bootstrap";
 import { IoSearch } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
     const navigate = useNavigate();
+    const [active, setActive] = useState("/Dashboard");
     useEffect(() => {
         fetch("http://localhost/backend/api/?action=principalcheck", { credentials: "include" })
             .then(res => res.json())
             .then(data => {
-                if (!data.logged_in) navigate("/Dashboard");
-                else navigate("/Principal");
+                if (!data.logged_in) setActive("/Dashboard");
+                else setActive("/Principal");
             })
-            .catch(() => navigate('/Dashboard'));
-    }, []);
+            .catch(() => setActive("/Dashboard"));
+
+        fetch("http://localhost/backend/api/?action=studentcheck", { credentials: "include" })
+            .then(res => res.json())
+            .then(data => {
+                if (!data.logged_in) setActive("/Dashboard");
+                else setActive("/Student");
+            })
+            .catch(() => setActive("/Dashboard"));
+
+        fetch("http://localhost/backend/api/?action=teachercheck", { credentials: "include" })
+            .then(res => res.json())
+            .then(data => {
+                if (!data.logged_in) setActive("/Dashboard");
+                else setActive("/Teacher");
+            })
+            .catch(() => setActive("/Dashboard"));
+
+        navigate(active);
+    }, [active]);
 
     return (
         <>
@@ -57,7 +76,7 @@ const Header = () => {
                                 Signup Options
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
-                                <Dropdown.Item as={Link} to="/Dashboard/teacher-login" className="text-dark">Teacher</Dropdown.Item>
+                                <Dropdown.Item as={Link} to="/Dashboard/teacher-signup" className="text-dark">Teacher</Dropdown.Item>
                                 <Dropdown.Item as={Link} to="/Dashboard/student-login" className="text-dark">Student</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>

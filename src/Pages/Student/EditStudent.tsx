@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
+import type { AppDispatch, RootState } from "../../store/store";
+import { fetchTeacherList } from "../../store/slice/teacher";
 
 const EditStudent: React.FC = () => {
     const { id } = useParams<{ id: string }>();
+    const data = useSelector((state: RootState) => state.teacher)
+    const [teachers, setTeachers] = useState<any>();
+    const dispatch = useDispatch<AppDispatch>();
     const [students, setStudents] = useState({
         id: "",
         name: "",
@@ -36,6 +42,7 @@ const EditStudent: React.FC = () => {
     const [message, setMessage] = useState<string>("");
 
     useEffect(() => {
+        dispatch(fetchTeacherList());
         if (!id) return;
 
         fetch(`http://localhost/backend/api/?action=singlestudent&id=${ID}`)
@@ -62,6 +69,9 @@ const EditStudent: React.FC = () => {
             .catch((err) => console.error(err));
 
     }, []);
+    useEffect(() => {
+        setTeachers(data.data);
+    }, [data]);
 
     const HandleSubmit = async (e: any) => {
         e.preventDefault();
@@ -85,10 +95,9 @@ const EditStudent: React.FC = () => {
             const studentData = await addStudentResponse.json();
 
             if (studentData.status !== "success") {
-                setMessage("Error adding student.");
+                setMessage("Error Edting student.");
                 return;
             }
-            console.log(studentData)
 
             const student_id = ID; // NEW STUDENT ID
 
@@ -111,7 +120,7 @@ const EditStudent: React.FC = () => {
                 })
             });
 
-            setMessage(`Student & Details added successfully! ID: ${student_id}`);
+            setMessage(`Student & Details Edited successfully! ID: ${student_id}`);
         } catch (error: any) {
             setMessage(`Error: ${error.message}`);
         }
@@ -124,60 +133,76 @@ const EditStudent: React.FC = () => {
         <>
             <div className="m-4">
 
-                <form onSubmit={HandleSubmit} className="form-control p-4">
+                {students ?
+                    <form onSubmit={HandleSubmit} className="form-control p-4">
 
-                    <h2 className="text-center">Edit Student</h2>
+                        <h2 className="text-center">Edit Student</h2>
 
 
-                    <h4>Basic Details</h4>
+                        <h4>Basic Details</h4>
 
-                    <input className="form-control m-2" name="name" value={students.name} onChange={handleChange} placeholder="Name" />
 
-                    <input className="form-control m-2" name="father_name" value={students.father_name} onChange={handleChange} placeholder="Father Name" />
+                        <input className="form-control m-2" name="name" value={students.name} onChange={handleChange} placeholder="Name" />
 
-                    <input className="form-control m-2" name="mother_name" value={students.mother_name} onChange={handleChange} placeholder="Mother Name" />
+                        <input className="form-control m-2" name="father_name" value={students.father_name} onChange={handleChange} placeholder="Father Name" />
 
-                    <input className="form-control m-2" name="class" value={students.class} onChange={handleChange} placeholder="Class" />
+                        <input className="form-control m-2" name="mother_name" value={students.mother_name} onChange={handleChange} placeholder="Mother Name" />
 
-                    <input className="form-control m-2" name="year" value={students.year} onChange={handleChange} placeholder="Started Year" />
+                        <input className="form-control m-2" name="class" value={students.class} onChange={handleChange} placeholder="Class" />
 
-                    <input className="form-control m-2" name="teacher_name" value={students.teacher_name} onChange={handleChange} placeholder="Teacher" />
+                        <input className="form-control m-2" name="year" value={students.year} onChange={handleChange} placeholder="Started Year" />
 
-                    <h4 className="mt-4">Student Details</h4>
+                        <div className="row ms-0">
+                            <div className="col-10">
+                                <input className="form-control" id="tname" name="teacher_name" value={students.teacher_name} onChange={handleChange} placeholder="Teacher Name" />
+                            </div>
+                            <div className="col-2">
+                                <select name="teacher_name" className="form-control" onChange={handleChange} value={students.teacher_name} id="teachername">
+                                    <option value={""}>Select Subject</option>
+                                    {Array.isArray(teachers) && teachers.map((data: any, index: any) => (
+                                        <option value={data.name + " " + data.surname} key={index} > {data.subject}</option>
+                                    ))}
+                                </select>
+                            </div>
+                        </div>
 
-                    <input className="form-control m-2" name="rollNumber" value={students.rollNumber} onChange={handleChange} placeholder="Roll Number" />
+                        <h4 className="mt-4">Student Details</h4>
 
-                    <input className="form-control m-2" name="age" value={students.age} onChange={handleChange} placeholder="Age" />
+                        <input className="form-control m-2" name="rollNumber" value={students.rollNumber} onChange={handleChange} placeholder="Roll Number" />
 
-                    <input className="form-control m-2" name="course" value={students.course} onChange={handleChange} placeholder="Course" />
+                        <input className="form-control m-2" name="age" value={students.age} onChange={handleChange} placeholder="Age" />
 
-                    <input className="form-control m-2" name="section" value={students.section} onChange={handleChange} placeholder="Section" />
+                        <input className="form-control m-2" name="course" value={students.course} onChange={handleChange} placeholder="Course" />
 
-                    <input className="form-control m-2" name="attendance" value={students.attendance} onChange={handleChange} placeholder="Attendance %" />
+                        <input className="form-control m-2" name="section" value={students.section} onChange={handleChange} placeholder="Section" />
 
-                    <select name="feesStatus" className="form-control m-2" id="fees" onChange={handleChange} value={students.feesStatus} >
-                        <option value="Pending">Pending</option>
-                        <option value="Paid">Paid</option>
-                    </select>
+                        <input className="form-control m-2" name="attendance" value={students.attendance} onChange={handleChange} placeholder="Attendance %" />
 
-                    <input className="form-control m-2" name="grade" value={students.grade} onChange={handleChange} placeholder="Grade" />
+                        <select name="feesStatus" className="form-control m-2" id="fees" onChange={handleChange} value={students.feesStatus} >
+                            <option value="Pending">Pending</option>
+                            <option value="Paid">Paid</option>
+                        </select>
 
-                    <input className="form-control m-2" name="email" value={students.email} onChange={handleChange} placeholder="Email" />
+                        <input className="form-control m-2" name="grade" value={students.grade} onChange={handleChange} placeholder="Grade" />
 
-                    <input className="form-control m-2" name="phone" value={students.phone} onChange={handleChange} placeholder="Phone" />
+                        <input className="form-control m-2" name="email" value={students.email} onChange={handleChange} placeholder="Email" />
 
-                    <input className="form-control m-2" name="details_address" value={students?.detail_address} onChange={handleChange} placeholder="Details Address" />
+                        <input className="form-control m-2" name="phone" value={students.phone} onChange={handleChange} placeholder="Phone" />
 
-                    <input className="form-control m-2" name="pastYearMarks" value={students.pastYearMarks} onChange={handleChange} placeholder="Last Year Marks" />
+                        <input className="form-control m-2" name="details_address" value={students?.detail_address} onChange={handleChange} placeholder="Details Address" />
 
-                    <input className="form-control m-2" name="passingYear" value={students.passingYear} onChange={handleChange} placeholder="Passing Year" />
-                    {message && <p>{message}</p>}
+                        <input className="form-control m-2" name="pastYearMarks" value={students.pastYearMarks} onChange={handleChange} placeholder="Last Year Marks" />
 
-                    <div className="text-center">
-                        <button className="btn btn-primary m-3 w-25">Save</button>
-                        <Link to={"/Principal"} className="btn btn-secondary m-3 w-25">Back</Link>
-                    </div>
-                </form>
+                        <input className="form-control m-2" name="passingYear" value={students.passingYear} onChange={handleChange} placeholder="Passing Year" />
+                        {message && <p>{message}</p>}
+
+                        <div className="text-center">
+                            <button className="btn btn-primary m-3 w-25">Save</button>
+                            <Link to={"/Principal"} className="btn btn-secondary m-3 w-25">Back</Link>
+                        </div>
+                    </form>
+                    : <div>Loding...</div>
+                }
             </div>
         </>
     )
