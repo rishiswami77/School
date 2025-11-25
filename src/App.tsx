@@ -3,7 +3,7 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import AddTeachers from './Pages/Teacher/TeahcerSignup';
+import AddTeachers from './Pages/Teacher/AddTeacher';
 import Layout from './Layout/Layout';
 import AddStudent from './Pages/Student/AddStudent';
 import Search from './Pages/componets/Search';
@@ -33,8 +33,6 @@ function App() {
           <Routes>
             <Route path='/Dashboard' element={<Layout />} >
               <Route index element={<Main />} />
-              <Route path='/Dashboard/add-teacher' element={<AddTeachers />} />
-              <Route path='/Dashboard/add-student' element={<AddStudent />} />
               <Route path='/Dashboard/search' element={<Search />} />
               <Route path='/Dashboard/about' element={<About />} />
               <Route path='/Dashboard/contact-us' element={<ContactUs />} />

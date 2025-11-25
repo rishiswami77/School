@@ -44,7 +44,7 @@ const AddTeacher = () => {
         <>
             <div className='container'>
                 <form onSubmit={HandleSubmit} className='form-control'>
-                    <h2 className="text-center">Signup</h2>
+                    <h2 className="text-center">Add Teacher</h2>
                     <div className="input-group">
                         <label htmlFor="name" className="align-self-center me-4">Name:</label>&nbsp;
                         <input type="text" name='name' id="name" value={formdata.name} onChange={handleChange} placeholder='Enter your name' className='form-control m-2' />
@@ -68,7 +68,7 @@ const AddTeacher = () => {
                         <input type="text" name='subject' id="subject" value={formdata.subject} onChange={handleChange} placeholder='Enter your subject' className='form-control m-2' />
                     </div>
                     <div className='text-center'>
-                        <button className='btn btn-primary m-2 w-50' name='singup'>Singup</button>
+                        <button className='btn btn-primary m-2 w-50' name='addteacher'>Add Teacher</button>
                     </div>
                 </form>
                 {message && <p>{message}</p>}
