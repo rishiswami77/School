@@ -11,6 +11,8 @@ const AddStudent: React.FC = () => {
     const data = useSelector((state: RootState) => state.teacher);
     const [formdata, setFormdata] = useState({
         name: "",
+        username: "",
+        password: "",
         father_name: "",
         mother_name: "",
         class: "",
@@ -51,6 +53,8 @@ const AddStudent: React.FC = () => {
                 // Reset form
                 setFormdata({
                     name: "",
+                    username: "",
+                    password: "",
                     father_name: "",
                     mother_name: "",
                     class: "",
@@ -90,6 +94,12 @@ const AddStudent: React.FC = () => {
                     <h4>Basic Details</h4>
                     <label htmlFor="name" className="ms-2">Name:</label>
                     <input className="form-control m-2" name="name" id="name" value={formdata.name} onChange={handleChange} placeholder="Name" />
+
+                    <label htmlFor="username" className="ms-2">Username:</label>
+                    <input className="form-control m-2" id="username" name="username" value={formdata.username} onChange={handleChange} placeholder="User Name" />
+
+                    <label htmlFor="password" className="ms-2">Password:</label>
+                    <input className="form-control m-2" id="password" name="password" value={formdata.password} onChange={handleChange} placeholder="Password" />
 
                     <label htmlFor="fname" className="ms-2">Father Name:</label>
                     <input className="form-control m-2" id="fname" name="father_name" value={formdata.father_name} onChange={handleChange} placeholder="Father Name" />

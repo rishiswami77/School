@@ -12,6 +12,8 @@ const EditStudent: React.FC = () => {
     const [students, setStudents] = useState({
         id: "",
         name: "",
+        username: "",
+        password: "",
         father_name: "",
         mother_name: "",
         class: "",
@@ -67,7 +69,6 @@ const EditStudent: React.FC = () => {
             .then((res) => res.json())
             .then((data) => setStudents(data))
             .catch((err) => console.error(err));
-
     }, []);
     useEffect(() => {
         setTeachers(data.data);
@@ -83,6 +84,8 @@ const EditStudent: React.FC = () => {
                     method: "POST",
                     body: JSON.stringify({
                         name: students.name,
+                        username: students.username,
+                        password: students.password,
                         father_name: students.father_name,
                         mother_name: students.mother_name,
                         class: students.class,
@@ -101,7 +104,10 @@ const EditStudent: React.FC = () => {
 
             const student_id = ID; // NEW STUDENT ID
 
-            await fetch(`http://localhost/backend/api/?action=editstudentdetails&id=${ID}`, {
+            await fetch(`http://localhost/backend/api/?action=editstudentdetails`, {
+                headers: {
+                    "Content-Type": "application/json"
+                },
                 method: "POST",
                 body: JSON.stringify({
                     student_id,
@@ -143,6 +149,10 @@ const EditStudent: React.FC = () => {
 
 
                         <input className="form-control m-2" name="name" value={students.name} onChange={handleChange} placeholder="Name" />
+
+                        <input className="form-control m-2" name="username" value={students.username} onChange={handleChange} placeholder="User Name" />
+
+                        <input className="form-control m-2" name="password" value={students.password} onChange={handleChange} placeholder="password" />
 
                         <input className="form-control m-2" name="father_name" value={students.father_name} onChange={handleChange} placeholder="Father Name" />
 
@@ -189,7 +199,7 @@ const EditStudent: React.FC = () => {
 
                         <input className="form-control m-2" name="phone" value={students.phone} onChange={handleChange} placeholder="Phone" />
 
-                        <input className="form-control m-2" name="details_address" value={students?.detail_address} onChange={handleChange} placeholder="Details Address" />
+                        <input className="form-control m-2" name="detail_address" value={students?.detail_address} onChange={handleChange} placeholder="Details Address" />
 
                         <input className="form-control m-2" name="pastYearMarks" value={students.pastYearMarks} onChange={handleChange} placeholder="Last Year Marks" />
 

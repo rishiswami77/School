@@ -44,6 +44,8 @@ export const fetchAddStudent = createAsyncThunk(
                     },
                     body: JSON.stringify({
                         name: formdata.name,
+                        username: formdata.username,
+                        password: formdata.password,
                         father_name: formdata.father_name,
                         mother_name: formdata.mother_name,
                         class: formdata.class,
