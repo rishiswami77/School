@@ -41,8 +41,6 @@ const AddStudent: React.FC = () => {
         setTeachers(data.data);
     }, [data])
 
-    console.log()
-
     const HandleSubmit = (e: any) => {
         e.preventDefault();
         dispatch(fetchAddStudent(formdata))

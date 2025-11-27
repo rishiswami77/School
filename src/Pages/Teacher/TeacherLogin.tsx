@@ -46,8 +46,6 @@ const TeacherLogin: React.FC = () => {
         setLoading(false);
     };
 
-
-
     return (
         <div className="teacher-login-page d-flex justify-content-center align-items-center">
             <div className="login-wrapper d-flex rounded-4 shadow-lg overflow-hidden">

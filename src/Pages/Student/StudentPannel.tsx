@@ -36,17 +36,7 @@ const StudentPannel = () => {
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            {/* <li className="nav-item">
-                                <Link to={"/Principal/add-teacher"} className="nav-link">Add Teachers</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to={"/Principal/add-student"} className="nav-link" >Add Students</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to={"/Principal/attendancelist"} className="nav-link" >Attendance</Link>
-                            </li> */}
-                        </ul>
+                        <div className="me-auto"></div>
                         <Link to={"/Student/search"} className="btn btn-info rounded-5 mx-2">
                             <IoSearch className="mb-1" />
                         </Link>

@@ -6,15 +6,6 @@ import { fetchTeacherList } from "../../store/slice/teacher";
 import { fetchPrincipalDetails } from "../../store/slice/principal";
 const About: React.FC = () => {
 
-
-    // const teachersImages = [
-    //     { img: "https://images.unsplash.com/photo-1595152772835-219674b2a8a6?auto=format&fit=crop&w=1200&q=80" },
-    //     { img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?auto=format&fit=crop&w=1200&q=80" },
-    //     { img: "https://images.unsplash.com/photo-1552058544-f2b08422138a?auto=format&fit=crop&w=1200&q=80" },
-    //     { img: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=1200&q=80" },
-    //     { img: "https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=1200&q=80" },
-    // ];
-
     const [teachers, setTeachers] = useState<any[]>([]);
     const [principal, setPrincipal] = useState<any>();
     const dispatch = useDispatch<AppDispatch>();
@@ -112,7 +103,7 @@ const About: React.FC = () => {
                     <div key={i} className="col-md-4 col-lg-3">
                         <div key={data.id} className="card teacher-card shadow-sm border-0 h-100">
                             <img
-                                src={data.img}
+                                src="#"
                                 alt={data.name}
                                 className="card-img-top teacher-img"
                             />

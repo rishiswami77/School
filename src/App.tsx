@@ -24,6 +24,7 @@ import PrincipalLayout from './Layout/PrincipalLayout';
 import SutdentLayout from './Layout/SutdentLayout';
 import TeacherLayout from './Layout/TeacherLayout';
 import TeacherSignup from './Pages/Teacher/TeahcerSignup';
+import StudentSignup from './Pages/Student/StudentSignup';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
               <Route path='/Dashboard/teacher-login' element={<TeacherLogin />} />
               <Route path='/Dashboard/principal-login' element={<PrincipalLogin />} />
               <Route path='/Dashboard/teacher-signup' element={<TeacherSignup />} />
+              <Route path='/Dashboard/student-signup' element={<StudentSignup />} />
             </Route>
             <Route path='/Principal' element={<PrincipalLayout />} >
               <Route index element={<Main />} />

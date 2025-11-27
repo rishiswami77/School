@@ -20,37 +20,6 @@ const PrincipalLogin: React.FC = () => {
             .catch(err => console.error("Check failed:", err));
     }, []);
 
-
-    // const handleSubmit = async (e: React.FormEvent) => {
-    //     e.preventDefault();
-
-    //     setLoading(true);
-    //     try {
-    //         const res = await fetch("http://localhost/backend/api/?action=principallogin", {
-    //             method: "POST",
-    //             credentials: "include",
-    //             headers: {
-    //                 "Content-Type": "application/x-www-form-urlencoded"
-    //             },
-    //             body: new URLSearchParams({
-    //                 username: form.username,
-    //                 password: form.password
-    //             })
-    //         });
-
-    //         const data = await res.json();
-    //         if (data.success) {
-    //             navigate("/Principal");
-    //         } else {
-    //             alert(data.message);
-    //         }
-    //     } catch (err) {
-    //         console.error(err);
-    //         alert("Server error");
-    //     }
-    //     setLoading(false);
-    // };
-
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!form.username || !form.password) {

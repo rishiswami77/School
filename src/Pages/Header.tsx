@@ -77,7 +77,7 @@ const Header = () => {
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
                                 <Dropdown.Item as={Link} to="/Dashboard/teacher-signup" className="text-dark">Teacher</Dropdown.Item>
-                                <Dropdown.Item as={Link} to="/Dashboard/student-login" className="text-dark">Student</Dropdown.Item>
+                                <Dropdown.Item as={Link} to="/Dashboard/student-signup" className="text-dark">Student</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
                     </div>
