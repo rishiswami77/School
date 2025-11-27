@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Table, Button } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 interface AttendanceRecord {
     date: string;
@@ -38,6 +38,7 @@ const AttendanceStudent: React.FC = () => {
 
     return (
         <div className="m-3">
+            <Link to={"/Principal/attendancelist"} className="btn btn-secondary">Back</Link>
             <h3 className="text-center">Student Attendance</h3>
             <>
                 <h4>{student?.name}'s Attendance</h4>

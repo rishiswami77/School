@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Table, Button } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 interface AttendanceRecord {
     date: string;
@@ -19,16 +19,17 @@ const AttendanceTeacher: React.FC = () => {
     }
     useEffect(() => {
         fetch(`http://localhost/backend/api/?action=singleteacher&id=${ID}`)
-        .then((res) => res.json())
-        .then((data) => setTeacher(data))
+            .then((res) => res.json())
+            .then((data) => setTeacher(data))
             .catch((err) => console.error(err));
-            fetch(`http://localhost/backend/api/?action=getattendance&user_id=${ID}&user_type=teacher`)
+        fetch(`http://localhost/backend/api/?action=getattendance&user_id=${ID}&user_type=teacher`)
             .then((res) => res.json())
             .then((data) => setAttendanceRecords(data))
             .catch((err) => console.log(err));
     }, [id]);
     return (
         <div className="m-3">
+            <Link to={"/Principal/attendancelist"} className="btn btn-secondary">Back</Link>
             <h3 className="text-center">Teacher Attendance</h3>
             <>
                 <h4>{teacher?.name}'s Attendance</h4>
