@@ -64,6 +64,7 @@ const StudentDetails: React.FC = () => {
         dispatch(fetchDeleteStudent(id));
         navigate('/admin')
     };
+    console.log(student)
     return (
         <div className="container mt-4">
             <div className="card shadow-lg">
@@ -95,6 +96,12 @@ const StudentDetails: React.FC = () => {
                         </div>
                         <div className="col-md-6 mb-3">
                             <strong>Roll Number:</strong> {student?.rollNumber}
+                        </div>
+                        <div className="col-md-6 mb-3">
+                            <strong>username:</strong> {student?.username}
+                        </div>
+                        <div className="col-md-6 mb-3">
+                            <strong>password:</strong> {student?.password}
                         </div>
                         <div className="col-md-6 mb-3">
                             <strong>Age:</strong> {student?.age}
