@@ -82,7 +82,7 @@ export const fetchAddStudent = createAsyncThunk(
                         grade: formdata.grade,
                         email: formdata.email,
                         phone: formdata.phone,
-                        address: formdata.details_address,
+                        address: formdata.address,
                         pastYearMarks: formdata.pastYearMarks,
                         passingYear: formdata.passingYear
                     }),

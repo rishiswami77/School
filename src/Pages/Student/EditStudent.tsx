@@ -115,7 +115,7 @@ const EditStudent: React.FC = () => {
                     grade: students.grade,
                     email: students.email,
                     phone: students.phone,
-                    address: students.detail_address,
+                    address: students.address,
                     pastYearMarks: students.pastYearMarks,
                     passingYear: students.passingYear
                 })
@@ -126,11 +126,6 @@ const EditStudent: React.FC = () => {
             setMessage("Error: " + error.message);
         }
     };
-
-
-    // ---------------------------
-    // RENDER
-    // ---------------------------
     return (
         <div className="m-4">
             {!students ? (
@@ -181,7 +176,7 @@ const EditStudent: React.FC = () => {
                     <input className="form-control m-2" name="grade" value={students.grade || ""} onChange={handleChange} placeholder="Grade" />
                     <input className="form-control m-2" name="email" value={students.email || ""} onChange={handleChange} placeholder="Email" />
                     <input className="form-control m-2" name="phone" value={students.phone || ""} onChange={handleChange} placeholder="Phone" />
-                    <input className="form-control m-2" name="detail_address" value={students.detail_address || ""} onChange={handleChange} placeholder="Details Address" />
+                    <input className="form-control m-2" name="address" value={students.address || ""} onChange={handleChange} placeholder="Details Address" />
                     <input className="form-control m-2" name="pastYearMarks" value={students.pastYearMarks || ""} onChange={handleChange} placeholder="Last Year Marks" />
                     <input className="form-control m-2" name="passingYear" value={students.passingYear || ""} onChange={handleChange} placeholder="Passing Year" />
 

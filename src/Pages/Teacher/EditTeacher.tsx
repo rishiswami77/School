@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const EditTeachers: React.FC = () => {
 
@@ -28,7 +28,7 @@ const EditTeachers: React.FC = () => {
             .catch((err) => {
                 console.error("Fetch failed:", err);
             });
-    }, []);
+    }, [ID]);
 
     const HandleSubmit = async (e: any) => {
         e.preventDefault();
@@ -88,7 +88,8 @@ const EditTeachers: React.FC = () => {
                         <input type="text" name='subject' id="subject" value={teacher?.subject} onChange={handleChange} placeholder='Enter your subject' className='form-control m-2' />
                     </div>
                     <div className='text-center'>
-                        <button className='btn btn-primary m-2 w-50' name='addteacher'>Save</button>
+                        <button className='btn btn-primary m-2 w-25' name='addteacher'>Save</button>
+                        <Link to={"/Principal"} className='btn btn-secondary m-2 w-25'>Back</Link>
                     </div>
                 </form>
             </div>

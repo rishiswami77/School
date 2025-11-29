@@ -29,7 +29,7 @@ const AddStudent: React.FC = () => {
         grade: "",
         email: "",
         phone: "",
-        details_address: "",
+        address: "",
         pastYearMarks: "",
         passingYear: ""
     });
@@ -67,7 +67,7 @@ const AddStudent: React.FC = () => {
                     grade: "",
                     email: "",
                     phone: "",
-                    details_address: "",
+                    address: "",
                     pastYearMarks: "",
                     passingYear: ""
                 });
@@ -149,7 +149,7 @@ const AddStudent: React.FC = () => {
 
                     <input className="form-control m-2" name="phone" value={formdata.phone} onChange={handleChange} placeholder="Phone" />
 
-                    <input className="form-control m-2" name="details_address" value={formdata.details_address} onChange={handleChange} placeholder="Details Address" />
+                    <input className="form-control m-2" name="address" value={formdata.address} onChange={handleChange} placeholder="Details Address" />
 
                     <input className="form-control m-2" name="pastYearMarks" value={formdata.pastYearMarks} onChange={handleChange} placeholder="Last Year Marks" />
 
