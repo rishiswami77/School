@@ -123,15 +123,13 @@ const StudentDetails: React.FC = () => {
                             <span className="badge bg-primary">{student?.grade}</span>
                         </div>
                         <div className="col-md-6 mb-3">
-                            <strong>Email:</strong> <br />
-                            {student?.email}
+                            <strong>Email:</strong> {student?.email}
                         </div>
                         <div className="col-md-6 mb-3">
                             <strong>Phone:</strong> {student?.phone}
                         </div>
                         <div className="col-6 mb-3">
-                            <strong>Address:</strong> <br />
-                            {student?.detail_address}
+                            <strong>Address:</strong> {student?.address}
                         </div>
                         <div className="col-6 mb-3">
                             <strong>Total Pargents: </strong>
@@ -145,7 +143,7 @@ const StudentDetails: React.FC = () => {
                             <strong>Total Absents: </strong>
                             <span className="badge bg-danger">{totalAbsents}</span>
                         </div>
-                        <div className="col-md-6 mb-3">
+                        <div className="col-md-12 mb-3">
                             <strong>Passing Year:</strong> {student?.passingYear}
                         </div>
                         <div className="col-md-6 mb-3">
