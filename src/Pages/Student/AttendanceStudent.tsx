@@ -8,15 +8,12 @@ interface AttendanceRecord {
 }
 
 const AttendanceStudent: React.FC = () => {
+
     const { id } = useParams<{ id: string }>();
     const [attendanceRecords, setAttendanceRecords] = useState<AttendanceRecord[]>([]);
     const [student, setStudent] = useState<any>();
-    let ID: number;
-    if (id) {
-        const parts = id.split("=");
-        const idstr = parts[1];
-        ID = Number(idstr.trim());
-    }
+    const ID = Number(id);
+
     useEffect(() => {
         fetch(`http://localhost/backend/api/?action=singlestudent&id=${ID}`)
             .then((res) => res.json())

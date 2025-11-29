@@ -7,13 +7,7 @@ import { fetchTeacherList } from "../../store/slice/teacher";
 const EditStudent: React.FC = () => {
 
     const { id } = useParams<{ id: string }>();
-    let ID: number;
-    if (id) {
-        const parts = id.split("=");
-        const idstr = parts[1];
-        ID = Number(idstr.trim());
-    }
-    // const studentId = Number(id);   // <-- MUCH CLEANER
+    const ID = Number(id);
 
     const dispatch = useDispatch<AppDispatch>();
     const teacherState = useSelector((state: RootState) => state.teacher);

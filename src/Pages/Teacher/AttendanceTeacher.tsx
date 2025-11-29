@@ -11,12 +11,7 @@ const AttendanceTeacher: React.FC = () => {
     const { id } = useParams<{ id: string }>();
     const [attendanceRecords, setAttendanceRecords] = useState<AttendanceRecord[]>([]);
     const [teacher, setTeacher] = useState<any>();
-    let ID: number;
-    if (id) {
-        const parts = id.split("=");
-        const idstr = parts[1];
-        ID = Number(idstr.trim());
-    }
+    const ID = Number(id);
     useEffect(() => {
         fetch(`http://localhost/backend/api/?action=singleteacher&id=${ID}`)
             .then((res) => res.json())

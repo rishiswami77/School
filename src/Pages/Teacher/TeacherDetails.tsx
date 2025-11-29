@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import type { AppDispatch } from "../../store/store";
 import { fetchDeleteTeacher } from "../../store/slice/teacher";
 
@@ -10,15 +10,9 @@ const TeacherDetails: React.FC = () => {
     const [totalAbsents, setTotalAbsents] = useState(0);
     const [totalPresents, setTotalPresents] = useState(0);
     const dispatch = useDispatch<AppDispatch>();
-
+    const navigate = useNavigate();
     const { id } = useParams<{ id: string }>();
-
-    let ID: number;
-    if (id) {
-        const parts = id.split("=");
-        const idstr = parts[1];
-        ID = Number(idstr.trim());
-    }
+    const ID = Number(id);
     useEffect(() => {
         fetch(`http://localhost/backend/api/?action=getattendance&user_id=${ID}&user_type=teacher`)
             .then((res) => res.json())
@@ -51,6 +45,7 @@ const TeacherDetails: React.FC = () => {
 
     const Deleteteachers = async (id: any) => {
         dispatch(fetchDeleteTeacher(id));
+        navigate('/Principal')
     };
     return (
         <div className="container mt-4">
@@ -71,8 +66,7 @@ const TeacherDetails: React.FC = () => {
                             <strong>User Name:</strong> {teachers?.username}
                         </div>
                         <div className="col-md-6 mb-3">
-                            <strong>Email:</strong> <br />
-                            {teachers?.email}
+                            <strong>Email:</strong> {teachers?.email}
                         </div>
                         <div className="col-md-6 mb-3">
                             <strong>Password:</strong> {teachers?.password}
@@ -85,11 +79,17 @@ const TeacherDetails: React.FC = () => {
                             <strong>Total Absents: </strong>
                             <span className="badge bg-danger">{totalAbsents}</span>
                         </div>
+                        <div className="col-md-6 mb-3">
+                            <strong>Created Time:</strong> {teachers?.CreatedAt}
+                        </div>
+                        <div className="col-md-6 mb-3">
+                            <strong>Updated Time:</strong> {teachers?.UpdatedAt}
+                        </div>
                     </div>
                 </div>
 
                 <div className="card-footer text-center">
-                    <Link to={`/Principal/teacher-edit/id=${teachers?.id}`} className="btn btn-primary mx-2">Edit</Link>
+                    <Link to={`/Principal/teacher-edit/${teachers?.id}`} className="btn btn-primary mx-2">Edit</Link>
                     <button className="btn btn-danger mx-2" onClick={() => Deleteteachers(ID)}>Delete</button>
                     <Link className="btn btn-secondary" to={"/Principal"}>Back</Link>
                 </div>

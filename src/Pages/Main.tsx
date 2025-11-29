@@ -106,15 +106,15 @@ const Main = () => {
                                     <td>{details.teacher_name}</td>
                                     {principal && (
                                         <>
-                                            <td className="text-center"><Link to={`/Principal/student-edit/id=${details.id}`} className="text-dark"><FaRegEdit /></Link></td>
+                                            <td className="text-center"><Link to={`/Principal/student-edit/${details.id}`} className="text-dark"><FaRegEdit /></Link></td>
                                             <td className="text-center"><button className="border-0 bg-transparent" onClick={() => DeleteStudent(details.id)}><RiDeleteBinLine /></button></td>
-                                            <td className="text-center"><Link to={`/Principal/student-details/id=${details.id}`}><RiShareBoxLine className="text-dark" /></Link></td>
+                                            <td className="text-center"><Link to={`/Principal/student-details/${details.id}`}><RiShareBoxLine className="text-dark" /></Link></td>
                                         </>
                                     )}
                                     {teacher &&
                                         <>
-                                            <td className="text-center"><Link to={`/Teacher/student-edit/id=${details.id}`} className="text-dark"><FaRegEdit /></Link></td>
-                                            <td className="text-center"><Link to={`/Teacher/student-details/id=${details.id}`}><RiShareBoxLine className="text-dark" /></Link></td>
+                                            <td className="text-center"><Link to={`/Teacher/student-edit/${details.id}`} className="text-dark"><FaRegEdit /></Link></td>
+                                            <td className="text-center"><Link to={`/Teacher/student-details/${details.id}`}><RiShareBoxLine className="text-dark" /></Link></td>
                                         </>
                                     }
                                 </tr>
@@ -146,9 +146,9 @@ const Main = () => {
                                     <td>{details.subject}</td>
                                     {principal && (
                                         <>
-                                            <td className="text-center"><Link to={`/Principal/teacher-edit/id=${details.id}`} className="text-dark"><FaRegEdit /></Link></td>
+                                            <td className="text-center"><Link to={`/Principal/teacher-edit/${details.id}`} className="text-dark"><FaRegEdit /></Link></td>
                                             <td className="text-center"><button className="border-0 bg-transparent" onClick={() => DeleteTeacher(details.id)}><RiDeleteBinLine /></button></td>
-                                            <td className="text-center"><Link to={`/Principal/teacher-details/id=${details.id}`}><RiShareBoxLine className="text-dark" /></Link></td>
+                                            <td className="text-center"><Link to={`/Principal/teacher-details/${details.id}`}><RiShareBoxLine className="text-dark" /></Link></td>
                                         </>
                                     )}
                                 </tr>

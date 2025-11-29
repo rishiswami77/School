@@ -13,12 +13,7 @@ const StudentDetails: React.FC = () => {
     const navigate = useNavigate();
     const { id } = useParams<{ id: string }>();
     const [admin, setAdmin] = useState(false);
-    let ID: number;
-    if (id) {
-        const parts = id.split("=");
-        const idstr = parts[1];
-        ID = Number(idstr.trim());
-    }
+    const ID = Number(id);
     useEffect(() => {
         fetch("http://localhost/backend/api/?action=principalcheck", {
             credentials: "include"
@@ -62,9 +57,8 @@ const StudentDetails: React.FC = () => {
     }, [id]);
     const DeleteStudent = async (id: any) => {
         dispatch(fetchDeleteStudent(id));
-        navigate('/admin')
+        navigate('/Principal')
     };
-    console.log(student)
     return (
         <div className="container mt-4">
             <div className="card shadow-lg">
@@ -153,6 +147,12 @@ const StudentDetails: React.FC = () => {
                         </div>
                         <div className="col-md-6 mb-3">
                             <strong>Passing Year:</strong> {student?.passingYear}
+                        </div>
+                        <div className="col-md-6 mb-3">
+                            <strong>Created Time:</strong> {student?.CreatedAt}
+                        </div>
+                        <div className="col-md-6 mb-3">
+                            <strong>Updated Time:</strong> {student?.UpdatedAt}
                         </div>
                     </div>
                 </div>

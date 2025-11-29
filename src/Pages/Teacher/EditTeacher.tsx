@@ -1,20 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-
 const EditTeachers: React.FC = () => {
-    const { id } = useParams<{ id: string }>();
-    const [teacher, setTeacher] = useState<any>()
-    const [message, setMessage] = useState<string>("");
 
-    let ID: number;
-    if (id) {
-        const parts = id.split("=");
-        const idstr = parts[1];
-        ID = Number(idstr.trim());
-    }
+    const { id } = useParams<{ id: string }>();
+    const [teacher, setTeacher] = useState<any>({})
+    const [message, setMessage] = useState<string>("");
+    const ID = Number(id);
+
     useEffect(() => {
-        if (!id) return;
+        if (!ID) return;
 
         fetch(`http://localhost/backend/api/?action=singleteacher&id=${ID}`)
             .then((res) => {
@@ -33,7 +28,6 @@ const EditTeachers: React.FC = () => {
             .catch((err) => {
                 console.error("Fetch failed:", err);
             });
-        console.log(teacher)
     }, []);
 
     const HandleSubmit = async (e: any) => {
@@ -91,7 +85,7 @@ const EditTeachers: React.FC = () => {
                     </div>
                     <div className="input-group">
                         <label htmlFor="subject" className="align-self-center me-2">Subject:</label>&nbsp;&nbsp;
-                        <input type="subject" name='subject' id="subject" value={teacher?.subject} onChange={handleChange} placeholder='Enter your subject' className='form-control m-2' />
+                        <input type="text" name='subject' id="subject" value={teacher?.subject} onChange={handleChange} placeholder='Enter your subject' className='form-control m-2' />
                     </div>
                     <div className='text-center'>
                         <button className='btn btn-primary m-2 w-50' name='addteacher'>Save</button>
