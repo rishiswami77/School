@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { CgProfile } from "react-icons/cg";
 import { IoExitOutline, IoSearch } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -6,18 +7,19 @@ const StudentPannel = () => {
 
     const navigate = useNavigate();
     const [username, setUsername] = useState("");
+    const [userId, setUserId] = useState();
     useEffect(() => {
         fetch("http://localhost/backend/api/?action=studentcheck", { credentials: "include" })
             .then(res => res.json())
             .then(data => {
                 if (!data.logged_in) navigate("/Dashboard");
-                else setUsername(data.username);
+                else {
+                    setUserId(data.id);
+                    setUsername(data.username);
+                }
             })
-            // .catch(() => navigate());
             .catch(() => console.log("error"));
     }, []);
-
-
 
     const handleLogout = async () => {
         await fetch("http://localhost/backend/api/?action=studentlogout", {
@@ -25,7 +27,6 @@ const StudentPannel = () => {
         });
         navigate("/Dashboard");
     };
-
     return (
         <>
             <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -37,9 +38,11 @@ const StudentPannel = () => {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <div className="me-auto"></div>
-                        <Link to={"/Student/search"} className="btn btn-info rounded-5 mx-2">
+                        <Link to={"/Student/search"} className="btn btn-info rounded-5 mx-2 ms-5 me-auto w-25">
                             <IoSearch className="mb-1" />
                         </Link>
+                        <Link to={`/Student/StudentProfile/${userId}`} className="nav-link active me-3"><CgProfile className="fs-3" /></Link>
+
                         <button className="btn mx-2 btn-info rounded-0" onClick={handleLogout}>{username} <IoExitOutline className="mb-1" /></button>
                     </div>
                 </div >

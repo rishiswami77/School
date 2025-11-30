@@ -26,7 +26,9 @@ import TeacherLayout from './Layout/TeacherLayout';
 import TeacherSignup from './Pages/Teacher/TeahcerSignup';
 import StudentSignup from './Pages/Student/StudentSignup';
 import NotFound from './Pages/NotFound';
+import StudentProfile from './Pages/Student/StudentProfile';
 import { useEffect } from 'react';
+import TeacherProfile from './Pages/Teacher/TeacherProfile';
 
 function App() {
   const navigate = useNavigate();
@@ -75,6 +77,7 @@ function App() {
           <Route path='/Student' element={<SutdentLayout />}>
             <Route index element={<Main />} />
             <Route path='/Student/search' element={<Search />} />
+            <Route path='/Student/StudentProfile/:id' element={<StudentProfile />} />
           </Route>
 
           <Route path='/Teacher' element={<TeacherLayout />}>
@@ -82,6 +85,7 @@ function App() {
             <Route path='/Teacher/search' element={<Search />} />
             <Route path='/Teacher/student-details/:id' element={<StudentDetails />} />
             <Route path='/Teacher/student-edit/:id' element={<EditStudent />} />
+            <Route path='/Teacher/TeacherProfile/:id' element={<TeacherProfile />} />
           </Route>
         </Routes>
       </div>
